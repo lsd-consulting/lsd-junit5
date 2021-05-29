@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>LsdExtension Test Report</title>
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .overlay:target {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup {
+            margin: 70px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            max-width: 70%;
+            position: relative;
+            transition: all 5s ease-in-out;
+        }
+
+        h1, h2, h3 {
+            margin-top: 0;
+            color: #333;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
+        .popup .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .popup .close:hover {
+            color: #06D85F;
+        }
+
+        .popup .content {
+            overflow: auto;
+        }
+
+        /*    Make Facts look like table*/
+        .factTable {
+            display: table;
+        }
+
+        .factRow {
+            display: table-row;
+        }
+
+        .factRowHead {
+            display: table-header-group;
+            font-weight: bold;
+        }
+
+        .factCell, .factRowHead {
+            display: table-cell;
+            padding: 3px 10px;
+            border: 1px solid #999999;
+        }
+
+        /* Some basic spacing for now  */
+        section {
+            border: 15px solid skyblue;
+            padding: 50px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<main role="main">
+    <h1>LsdExtension Test Report</h1>
+        <article>
+        <h2>The failed test name</h2>
+        <section class="description">
+            <h3>Description</h3>
+            Failed!        </section>
+                <section class="sequence diagram svg">
+            <h3>Sequence Diagram</h3>
+            <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="152px" preserveAspectRatio="none" style="width:305px;height:152px;background:#FFFFFF;" version="1.1" viewBox="0 0 305 152" width="305px" zoomAndPan="magnify">
+  <defs />
+  <g>
+    <line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="73" x2="73" y1="37.0146" y2="116.6133" />
+    <line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="231" x2="231" y1="37.0146" y2="116.6133" />
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="106" x="20" y="5" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="92" x="27" y="26.0752">LsdExtension</text>
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="106" x="20" y="115.6133" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="92" x="27" y="136.6885">LsdExtension</text>
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="136" x="163" y="5" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="122" x="170" y="26.0752">LsdExtensionTest</text>
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="136" x="163" y="115.6133" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="122" x="170" y="136.6885">LsdExtensionTest</text>
+    <polygon fill="#000000" points="219,64.814,229,68.814,219,72.814,223,68.814" style="stroke:#000000;stroke-width:1.0;" />
+    <line style="stroke:#000000;stroke-width:1.0;" x1="73" x2="225" y1="68.814" y2="68.814" />
+    <a href="#abc123" target="_top" title="#abc123" xlink:actuate="onRequest" xlink:href="#abc123" xlink:show="new" xlink:title="#abc123" xlink:type="simple">
+      <text fill="#0000FF" font-family="Verdana" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="128" x="80" y="64.0845">pre test processing</text>
+    </a>
+    <polygon fill="#000000" points="219,94.6133,229,98.6133,219,102.6133,223,98.6133" style="stroke:#000000;stroke-width:1.0;" />
+    <line style="stroke:#000000;stroke-width:1.0;" x1="73" x2="225" y1="98.6133" y2="98.6133" />
+    <a href="#abc456" target="_top" title="#abc456" xlink:actuate="onRequest" xlink:href="#abc456" xlink:show="new" xlink:title="#abc456" xlink:type="simple">
+      <text fill="#0000FF" font-family="Verdana" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="134" x="80" y="93.8838">post test processing</text>
+    </a>
+  </g>
+</svg>
+
+        </section>
+        <section class="sequence diagram uml">
+            <h3>Sequence Diagram Markup</h3>
+            <pre>@startuml
+
+!theme plain
+hide unlinked
+
+
+
+LsdExtension -&gt; LsdExtensionTest:[[#abc123 pre test processing]]
+LsdExtension -&gt; LsdExtensionTest:[[#abc456 post test processing]]
+
+@enduml</pre>
+        </section>
+                <!-- Section containing data for sequence diagram popups -->
+        <div id="abc123" class="overlay">
+            <div class="popup">
+                <h2>pre test processing</h2>
+                <a class="close" href="#!">&times;</a>
+                <div class="content">
+                    <pre>preTestProcessing()</pre>
+                </div>
+            </div>
+        </div>
+                <!-- Section containing data for sequence diagram popups -->
+        <div id="abc456" class="overlay">
+            <div class="popup">
+                <h2>post test processing</h2>
+                <a class="close" href="#!">&times;</a>
+                <div class="content">
+                    <pre>postTestProcessing()</pre>
+                </div>
+            </div>
+        </div>
+            </article>
+        <article>
+        <h2>The successful test name</h2>
+        <section class="description">
+            <h3>Description</h3>
+            Passed!        </section>
+                <section class="sequence diagram svg">
+            <h3>Sequence Diagram</h3>
+            <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="152px" preserveAspectRatio="none" style="width:305px;height:152px;background:#FFFFFF;" version="1.1" viewBox="0 0 305 152" width="305px" zoomAndPan="magnify">
+  <defs />
+  <g>
+    <line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="73" x2="73" y1="37.0146" y2="116.6133" />
+    <line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="231" x2="231" y1="37.0146" y2="116.6133" />
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="106" x="20" y="5" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="92" x="27" y="26.0752">LsdExtension</text>
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="106" x="20" y="115.6133" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="92" x="27" y="136.6885">LsdExtension</text>
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="136" x="163" y="5" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="122" x="170" y="26.0752">LsdExtensionTest</text>
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="136" x="163" y="115.6133" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="122" x="170" y="136.6885">LsdExtensionTest</text>
+    <polygon fill="#000000" points="219,64.814,229,68.814,219,72.814,223,68.814" style="stroke:#000000;stroke-width:1.0;" />
+    <line style="stroke:#000000;stroke-width:1.0;" x1="73" x2="225" y1="68.814" y2="68.814" />
+    <a href="#abc123" target="_top" title="#abc123" xlink:actuate="onRequest" xlink:href="#abc123" xlink:show="new" xlink:title="#abc123" xlink:type="simple">
+      <text fill="#0000FF" font-family="Verdana" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="128" x="80" y="64.0845">pre test processing</text>
+    </a>
+    <polygon fill="#000000" points="219,94.6133,229,98.6133,219,102.6133,223,98.6133" style="stroke:#000000;stroke-width:1.0;" />
+    <line style="stroke:#000000;stroke-width:1.0;" x1="73" x2="225" y1="98.6133" y2="98.6133" />
+    <a href="#abc456" target="_top" title="#abc456" xlink:actuate="onRequest" xlink:href="#abc456" xlink:show="new" xlink:title="#abc456" xlink:type="simple">
+      <text fill="#0000FF" font-family="Verdana" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="134" x="80" y="93.8838">post test processing</text>
+    </a>
+  </g>
+</svg>
+
+        </section>
+        <section class="sequence diagram uml">
+            <h3>Sequence Diagram Markup</h3>
+            <pre>@startuml
+
+!theme plain
+hide unlinked
+
+
+
+LsdExtension -&gt; LsdExtensionTest:[[#abc123 pre test processing]]
+LsdExtension -&gt; LsdExtensionTest:[[#abc456 post test processing]]
+
+@enduml</pre>
+        </section>
+                <!-- Section containing data for sequence diagram popups -->
+        <div id="abc123" class="overlay">
+            <div class="popup">
+                <h2>pre test processing</h2>
+                <a class="close" href="#!">&times;</a>
+                <div class="content">
+                    <pre>preTestProcessing()</pre>
+                </div>
+            </div>
+        </div>
+                <!-- Section containing data for sequence diagram popups -->
+        <div id="abc456" class="overlay">
+            <div class="popup">
+                <h2>post test processing</h2>
+                <a class="close" href="#!">&times;</a>
+                <div class="content">
+                    <pre>postTestProcessing()</pre>
+                </div>
+            </div>
+        </div>
+            </article>
+        <article>
+        <h2>The aborted test name</h2>
+        <section class="description">
+            <h3>Description</h3>
+            Aborted!        </section>
+                <section class="sequence diagram svg">
+            <h3>Sequence Diagram</h3>
+            <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="152px" preserveAspectRatio="none" style="width:305px;height:152px;background:#FFFFFF;" version="1.1" viewBox="0 0 305 152" width="305px" zoomAndPan="magnify">
+  <defs />
+  <g>
+    <line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="73" x2="73" y1="37.0146" y2="116.6133" />
+    <line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="231" x2="231" y1="37.0146" y2="116.6133" />
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="106" x="20" y="5" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="92" x="27" y="26.0752">LsdExtension</text>
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="106" x="20" y="115.6133" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="92" x="27" y="136.6885">LsdExtension</text>
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="136" x="163" y="5" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="122" x="170" y="26.0752">LsdExtensionTest</text>
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="136" x="163" y="115.6133" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="122" x="170" y="136.6885">LsdExtensionTest</text>
+    <polygon fill="#000000" points="219,64.814,229,68.814,219,72.814,223,68.814" style="stroke:#000000;stroke-width:1.0;" />
+    <line style="stroke:#000000;stroke-width:1.0;" x1="73" x2="225" y1="68.814" y2="68.814" />
+    <a href="#abc123" target="_top" title="#abc123" xlink:actuate="onRequest" xlink:href="#abc123" xlink:show="new" xlink:title="#abc123" xlink:type="simple">
+      <text fill="#0000FF" font-family="Verdana" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="128" x="80" y="64.0845">pre test processing</text>
+    </a>
+    <polygon fill="#000000" points="219,94.6133,229,98.6133,219,102.6133,223,98.6133" style="stroke:#000000;stroke-width:1.0;" />
+    <line style="stroke:#000000;stroke-width:1.0;" x1="73" x2="225" y1="98.6133" y2="98.6133" />
+    <a href="#abc456" target="_top" title="#abc456" xlink:actuate="onRequest" xlink:href="#abc456" xlink:show="new" xlink:title="#abc456" xlink:type="simple">
+      <text fill="#0000FF" font-family="Verdana" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="134" x="80" y="93.8838">post test processing</text>
+    </a>
+  </g>
+</svg>
+
+        </section>
+        <section class="sequence diagram uml">
+            <h3>Sequence Diagram Markup</h3>
+            <pre>@startuml
+
+!theme plain
+hide unlinked
+
+
+
+LsdExtension -&gt; LsdExtensionTest:[[#abc123 pre test processing]]
+LsdExtension -&gt; LsdExtensionTest:[[#abc456 post test processing]]
+
+@enduml</pre>
+        </section>
+                <!-- Section containing data for sequence diagram popups -->
+        <div id="abc123" class="overlay">
+            <div class="popup">
+                <h2>pre test processing</h2>
+                <a class="close" href="#!">&times;</a>
+                <div class="content">
+                    <pre>preTestProcessing()</pre>
+                </div>
+            </div>
+        </div>
+                <!-- Section containing data for sequence diagram popups -->
+        <div id="abc456" class="overlay">
+            <div class="popup">
+                <h2>post test processing</h2>
+                <a class="close" href="#!">&times;</a>
+                <div class="content">
+                    <pre>postTestProcessing()</pre>
+                </div>
+            </div>
+        </div>
+            </article>
+        <article>
+        <h2>The disabled test name</h2>
+        <section class="description">
+            <h3>Description</h3>
+            Disabled!        </section>
+                <section class="sequence diagram svg">
+            <h3>Sequence Diagram</h3>
+            <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="152px" preserveAspectRatio="none" style="width:305px;height:152px;background:#FFFFFF;" version="1.1" viewBox="0 0 305 152" width="305px" zoomAndPan="magnify">
+  <defs />
+  <g>
+    <line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="73" x2="73" y1="37.0146" y2="116.6133" />
+    <line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="231" x2="231" y1="37.0146" y2="116.6133" />
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="106" x="20" y="5" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="92" x="27" y="26.0752">LsdExtension</text>
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="106" x="20" y="115.6133" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="92" x="27" y="136.6885">LsdExtension</text>
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="136" x="163" y="5" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="122" x="170" y="26.0752">LsdExtensionTest</text>
+    <rect fill="#FFFFFF" height="31.0146" style="stroke:#000000;stroke-width:1.0;" width="136" x="163" y="115.6133" />
+    <text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="122" x="170" y="136.6885">LsdExtensionTest</text>
+    <polygon fill="#000000" points="219,64.814,229,68.814,219,72.814,223,68.814" style="stroke:#000000;stroke-width:1.0;" />
+    <line style="stroke:#000000;stroke-width:1.0;" x1="73" x2="225" y1="68.814" y2="68.814" />
+    <a href="#abc123" target="_top" title="#abc123" xlink:actuate="onRequest" xlink:href="#abc123" xlink:show="new" xlink:title="#abc123" xlink:type="simple">
+      <text fill="#0000FF" font-family="Verdana" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="128" x="80" y="64.0845">pre test processing</text>
+    </a>
+    <polygon fill="#000000" points="219,94.6133,229,98.6133,219,102.6133,223,98.6133" style="stroke:#000000;stroke-width:1.0;" />
+    <line style="stroke:#000000;stroke-width:1.0;" x1="73" x2="225" y1="98.6133" y2="98.6133" />
+    <a href="#abc456" target="_top" title="#abc456" xlink:actuate="onRequest" xlink:href="#abc456" xlink:show="new" xlink:title="#abc456" xlink:type="simple">
+      <text fill="#0000FF" font-family="Verdana" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="134" x="80" y="93.8838">post test processing</text>
+    </a>
+  </g>
+</svg>
+
+        </section>
+        <section class="sequence diagram uml">
+            <h3>Sequence Diagram Markup</h3>
+            <pre>@startuml
+
+!theme plain
+hide unlinked
+
+
+
+LsdExtension -&gt; LsdExtensionTest:[[#abc123 pre test processing]]
+LsdExtension -&gt; LsdExtensionTest:[[#abc456 post test processing]]
+
+@enduml</pre>
+        </section>
+                <!-- Section containing data for sequence diagram popups -->
+        <div id="abc123" class="overlay">
+            <div class="popup">
+                <h2>pre test processing</h2>
+                <a class="close" href="#!">&times;</a>
+                <div class="content">
+                    <pre>preTestProcessing()</pre>
+                </div>
+            </div>
+        </div>
+                <!-- Section containing data for sequence diagram popups -->
+        <div id="abc456" class="overlay">
+            <div class="popup">
+                <h2>post test processing</h2>
+                <a class="close" href="#!">&times;</a>
+                <div class="content">
+                    <pre>postTestProcessing()</pre>
+                </div>
+            </div>
+        </div>
+            </article>
+    </main>
+</body>
+</html>
