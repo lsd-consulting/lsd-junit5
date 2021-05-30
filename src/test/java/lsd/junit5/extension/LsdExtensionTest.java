@@ -1,10 +1,7 @@
 package lsd.junit5.extension;
 
 import com.lsd.LsdContext;
-import com.lsd.events.Message;
 import lsd.junit5.LsdExtension;
-import lsd.junit5.LsdPostTestProcessing;
-import lsd.junit5.LsdPreTestProcessing;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -36,27 +33,5 @@ class LsdExtensionTest {
         lsdExtension.testDisabled(mockContext, Optional.of("Aborted reason"));
 
         Approvals.verify(lsdContext.completeReport("LsdExtension Test Report").toFile());
-    }
-
-    @LsdPreTestProcessing
-    public void preTestProcessing() {
-        lsdContext.capture(Message.builder()
-                .id("abc123")
-                .from("LsdExtension")
-                .to("LsdExtensionTest")
-                .data("preTestProcessing()")
-                .label("pre test processing")
-                .build());
-    }
-
-    @LsdPostTestProcessing
-    public void postTestProcessing() {
-        lsdContext.capture(Message.builder()
-                .id("abc456")
-                .from("LsdExtension")
-                .to("LsdExtensionTest")
-                .data("postTestProcessing()")
-                .label("post test processing")
-                .build());
     }
 }
