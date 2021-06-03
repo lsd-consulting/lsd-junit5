@@ -27,7 +27,7 @@ class LsdExtensionTest {
                 .thenReturn("The aborted test name")
                 .thenReturn("The disabled test name");
 
-        lsdExtension.testFailed(mockContext, new RuntimeException("Failed for testing purposes"));
+        lsdExtension.testFailed(mockContext, new AssertionError("Expected <true> but was <false>"));
         lsdExtension.testSuccessful(mockContext);
         lsdExtension.testAborted(mockContext, new RuntimeException("Aborted for testing reasons"));
         lsdExtension.testDisabled(mockContext, Optional.of("Aborted reason"));
