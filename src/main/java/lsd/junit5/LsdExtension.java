@@ -2,6 +2,7 @@ package lsd.junit5;
 
 import com.lsd.IdGenerator;
 import com.lsd.LsdContext;
+import com.lsd.properties.LsdProperties;
 import j2html.tags.UnescapedText;
 import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
@@ -18,11 +19,13 @@ import java.util.function.Consumer;
 import static com.lsd.report.model.PopupContent.popupDiv;
 import static j2html.TagCreator.*;
 import static java.util.Arrays.stream;
+import static java.util.function.Predicate.not;
 
 public class LsdExtension implements TestWatcher, AfterTestExecutionCallback, AfterAllCallback {
 
     private final LsdContext lsdContext = LsdContext.getInstance();
     private final IdGenerator idGenerator = lsdContext.getIdGenerator();
+    private final boolean hideStacktrace = LsdProperties.getBoolean("lsd.junit5.hideStacktrace");
 
     @Override
     public void testSuccessful(ExtensionContext context) {
@@ -52,9 +55,10 @@ public class LsdExtension implements TestWatcher, AfterTestExecutionCallback, Af
 
     private String createErrorDescription(Throwable cause, String header) {
         var contentId = idGenerator.next();
+        String exceptionMessage = extractMessage(cause);
         return p(
                 h4().with(new UnescapedText(header)).withClass("error"),
-                a().withHref("#" + contentId).withText(extractMessage(cause)),
+                a().withHref("#" + contentId).withText(exceptionMessage),
                 popupDiv(contentId, "Stacktrace", readStackTrace(cause))
         ).render();
     }
@@ -88,8 +92,9 @@ public class LsdExtension implements TestWatcher, AfterTestExecutionCallback, Af
 
     private String readStackTrace(Throwable cause) {
         return Optional.ofNullable(cause)
+                .filter(not(throwable -> hideStacktrace))
                 .map(ExceptionUtils::readStackTrace)
-                .orElse("");
+                .orElse("[Displaying the stacktrace was disabled or no cause was provided]");
     }
 
     private Consumer<Method> invokeMethodOn(Object instance) {
