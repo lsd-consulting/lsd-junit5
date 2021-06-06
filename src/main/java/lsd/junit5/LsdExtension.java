@@ -22,7 +22,7 @@ import static java.util.Arrays.stream;
 public class LsdExtension implements TestWatcher, AfterTestExecutionCallback, AfterAllCallback {
 
     private final LsdContext lsdContext = LsdContext.getInstance();
-    private final IdGenerator idGenerator = new IdGenerator(true);
+    private final IdGenerator idGenerator = lsdContext.getIdGenerator();
 
     @Override
     public void testSuccessful(ExtensionContext context) {
