@@ -1,4 +1,6 @@
 # lsd-junit5
+[![build](https://github.com/nickmcdowall/lsd-junit5/actions/workflows/gradle.yml/badge.svg)](https://github.com/nickmcdowall/lsd-junit5/actions/workflows/gradle.yml)
+
 junit5 extension for generating lsd reports. (living sequence diagrams)
 
 
