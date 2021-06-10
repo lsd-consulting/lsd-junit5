@@ -2,116 +2,171 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html" xml:lang="en" lang="en">
 <head>
     <title>LsdExtension Test Report</title>
-    <style>
-        .overlay {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            transition: opacity 500ms;
-            visibility: hidden;
-            opacity: 0;
-        }
-
-        .overlay:target {
-            visibility: visible;
-            opacity: 1;
-            overflow: scroll;
-        }
-
-        .popup {
-            margin: 70px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 5px;
-            max-width: 70%;
-            position: relative;
-            transition: all 5s ease-in-out;
-        }
-
-        h1, h2, h3 {
-            margin-top: 0;
-            color: #333;
-            font-family: Tahoma, Arial, sans-serif;
-        }
-
-        .popup .close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            transition: all 200ms;
-            font-size: 30px;
-            font-weight: bold;
-            text-decoration: none;
-            color: #333;
-        }
-
-        .popup .close:hover {
-            color: #06D85F;
-        }
-
-        .popup .content {
-            overflow: auto;
-        }
-
-        /*    Make Facts look like table*/
-        .factTable {
-            display: table;
-        }
-
-        .factRow {
-            display: table-row;
-        }
-
-        .factRowHead {
-            display: table-header-group;
-            font-weight: bold;
-        }
-
-        .factCell, .factRowHead {
-            display: table-cell;
-            padding: 3px 10px;
-            border: 1px solid #999999;
-        }
-
-        a, svg a text {
-            text-decoration: none;
-        }
-
-        /* Some basic spacing for now  */
-        section {
-            border: 5px solid skyblue;
-            border-radius: 5px;
-            padding: 50px;
-            margin: 20px;
-        }
-
-        article:nth-of-type(even) > section {
-            border: 5px solid slategrey;
-        }
-
-        /* highlight key facts (generated at runtime) */
-        span.highlight {
-            border-radius: 25px;
-            padding: 5px;
-            color: black;
-            background-color: palegreen;
-            border: 1px solid blue;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main role="main">
+    <h1 class="logo">LSD</h1>
     <h1>LsdExtension Test Report</h1>
-        <article id="9">
-        <h2>The failed test name</h2>
-        <section class="description">
-            <h3>Description</h3>
-            <p><h4 class="error">&#10060; Failed!</h4><a href="#7">Expected &lt;true&gt; but was &lt;false&gt;</a><div id="7" class="overlay" onclick="location.href=&#x27;#!&#x27;;"><div class="popup" onclick="event.stopPropagation();"><h2>Stacktrace</h2><a class="close" href="#!">&times;</a><div class="content"><pre>[Displaying the stacktrace was disabled or no cause was provided]</pre></div></div></div></p>        </section>
-                <section class="sequence diagram svg">
-            <h3>Sequence Diagram</h3>
+    <div class="contents">
+        <h3>Contents:</h3>
+        <ul class="contents">
+                        <li class="error"><a href="#3">The failed test name</a></li>
+                        <li class="success"><a href="#6">The successful test name</a></li>
+                        <li class="warn"><a href="#9">The aborted test name</a></li>
+                        <li class="warn"><a href="#12">The disabled test name</a></li>
+                    </ul>
+    </div>
+    
+    <article id="3">
+        <h2 class="error">The failed test name</h2>
+        <section class="description error">
+            <h3 class="error">Description</h3>
+            <p><h4 class="error">&#10060; Failed!</h4><a href="#1">Expected &lt;true&gt; but was &lt;false&gt;</a><div id="1" class="overlay" onclick="location.href=&#x27;#!&#x27;;"><div class="popup" onclick="event.stopPropagation();"><h2>Stacktrace</h2><a class="close" href="#!">&times;</a><div class="content"><pre>[Displaying the stacktrace was disabled or no cause was provided]</pre></div></div></div></p>        </section>
+                <section class="sequence diagram svg error">
+            <h3 class="error">Sequence Diagram</h3>
+            <pre><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="12px" preserveAspectRatio="none" style="width:12px;height:12px;background:#FFFFFF;" version="1.1" viewBox="0 0 12 12" width="12px" zoomAndPan="magnify">
+  <defs />
+  <g />
+</svg>
+
+</pre>
+            <div onclick="location.href='#!';" id="4" class="overlay">
+                <div class="popup" onclick="event.stopPropagation();">
+                    <h2>PlantUml markup</h2>
+                    <a class="close" href="#!">&times;</a>
+                    <div class="content">
+                        <pre><code>@startuml
+
+!theme plain
+hide unlinked
+
+
+
+
+@enduml</code></pre>
+                    </div>
+                </div>
+            </div>
+            <sub><a href="#4">[source]</a></sub>
+            <sub><a href="#5">[component diagram]</a></sub>
+        </section>
+        <!-- Popup for component diagram -->
+        <div onclick="location.href='#!';" id="5" class="overlay">
+            <div class="popup" onclick="event.stopPropagation();">
+                <h2>Component Diagram</h2>
+                <a class="close" href="#!">&times;</a>
+                <div class="content">
+                    <sup>[Requires Graphviz to be installed]</sup>
+                    <pre><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="12px" preserveAspectRatio="none" style="width:12px;height:12px;background:#FFFFFF;" version="1.1" viewBox="0 0 12 12" width="12px" zoomAndPan="magnify">
+  <defs />
+  <g />
+</svg>
+
+</pre>
+                </div>
+                <sub><a href="#uml5">[source]</a></sub>
+            </div>
+        </div>
+        <!-- Popup for component diagram UML via component diagram popup -->
+        <div onclick="location.href='#!';" id="uml5" class="overlay">
+            <div class="popup" onclick="event.stopPropagation();">
+                <h2>PlantUml markup</h2>
+                <a class="close" href="#5">&times;</a><!--show previous popup on close-->
+                <div class="content">
+                    <pre><code>@startuml
+
+!theme plain
+
+
+hide @unlinked
+@enduml</code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Section containing data for sequence diagram popups -->
+            </article>
+    
+    <article id="6">
+        <h2 class="success">The successful test name</h2>
+        <section class="description success">
+            <h3 class="success">Description</h3>
+            <p><h4 class="success">&#127808; Test Passed</h4></p>        </section>
+                <section class="sequence diagram svg success">
+            <h3 class="success">Sequence Diagram</h3>
+            <pre><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="12px" preserveAspectRatio="none" style="width:12px;height:12px;background:#FFFFFF;" version="1.1" viewBox="0 0 12 12" width="12px" zoomAndPan="magnify">
+  <defs />
+  <g />
+</svg>
+
+</pre>
+            <div onclick="location.href='#!';" id="7" class="overlay">
+                <div class="popup" onclick="event.stopPropagation();">
+                    <h2>PlantUml markup</h2>
+                    <a class="close" href="#!">&times;</a>
+                    <div class="content">
+                        <pre><code>@startuml
+
+!theme plain
+hide unlinked
+
+
+
+
+@enduml</code></pre>
+                    </div>
+                </div>
+            </div>
+            <sub><a href="#7">[source]</a></sub>
+            <sub><a href="#8">[component diagram]</a></sub>
+        </section>
+        <!-- Popup for component diagram -->
+        <div onclick="location.href='#!';" id="8" class="overlay">
+            <div class="popup" onclick="event.stopPropagation();">
+                <h2>Component Diagram</h2>
+                <a class="close" href="#!">&times;</a>
+                <div class="content">
+                    <sup>[Requires Graphviz to be installed]</sup>
+                    <pre><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="12px" preserveAspectRatio="none" style="width:12px;height:12px;background:#FFFFFF;" version="1.1" viewBox="0 0 12 12" width="12px" zoomAndPan="magnify">
+  <defs />
+  <g />
+</svg>
+
+</pre>
+                </div>
+                <sub><a href="#uml8">[source]</a></sub>
+            </div>
+        </div>
+        <!-- Popup for component diagram UML via component diagram popup -->
+        <div onclick="location.href='#!';" id="uml8" class="overlay">
+            <div class="popup" onclick="event.stopPropagation();">
+                <h2>PlantUml markup</h2>
+                <a class="close" href="#8">&times;</a><!--show previous popup on close-->
+                <div class="content">
+                    <pre><code>@startuml
+
+!theme plain
+
+
+hide @unlinked
+@enduml</code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Section containing data for sequence diagram popups -->
+            </article>
+    
+    <article id="9">
+        <h2 class="warn">The aborted test name</h2>
+        <section class="description warn">
+            <h3 class="warn">Description</h3>
+            <p><h4 class="error">Test Aborted!</h4><a href="#2">Aborted for testing reasons</a><div id="2" class="overlay" onclick="location.href=&#x27;#!&#x27;;"><div class="popup" onclick="event.stopPropagation();"><h2>Stacktrace</h2><a class="close" href="#!">&times;</a><div class="content"><pre>[Displaying the stacktrace was disabled or no cause was provided]</pre></div></div></div></p>        </section>
+                <section class="sequence diagram svg warn">
+            <h3 class="warn">Sequence Diagram</h3>
             <pre><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="12px" preserveAspectRatio="none" style="width:12px;height:12px;background:#FFFFFF;" version="1.1" viewBox="0 0 12 12" width="12px" zoomAndPan="magnify">
   <defs />
@@ -175,13 +230,14 @@ hide @unlinked
         </div>
         <!-- Section containing data for sequence diagram popups -->
             </article>
-        <article id="12">
-        <h2>The successful test name</h2>
-        <section class="description">
-            <h3>Description</h3>
-            <p><h4 class="info">&#127808; Test Passed</h4></p>        </section>
-                <section class="sequence diagram svg">
-            <h3>Sequence Diagram</h3>
+    
+    <article id="12">
+        <h2 class="warn">The disabled test name</h2>
+        <section class="description warn">
+            <h3 class="warn">Description</h3>
+            <p><h4 class="warn">Test Disabled</h4></p>        </section>
+                <section class="sequence diagram svg warn">
+            <h3 class="warn">Sequence Diagram</h3>
             <pre><?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="12px" preserveAspectRatio="none" style="width:12px;height:12px;background:#FFFFFF;" version="1.1" viewBox="0 0 12 12" width="12px" zoomAndPan="magnify">
   <defs />
@@ -245,146 +301,6 @@ hide @unlinked
         </div>
         <!-- Section containing data for sequence diagram popups -->
             </article>
-        <article id="15">
-        <h2>The aborted test name</h2>
-        <section class="description">
-            <h3>Description</h3>
-            <p><h4 class="error">Test Aborted!</h4><a href="#8">Aborted for testing reasons</a><div id="8" class="overlay" onclick="location.href=&#x27;#!&#x27;;"><div class="popup" onclick="event.stopPropagation();"><h2>Stacktrace</h2><a class="close" href="#!">&times;</a><div class="content"><pre>[Displaying the stacktrace was disabled or no cause was provided]</pre></div></div></div></p>        </section>
-                <section class="sequence diagram svg">
-            <h3>Sequence Diagram</h3>
-            <pre><?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="12px" preserveAspectRatio="none" style="width:12px;height:12px;background:#FFFFFF;" version="1.1" viewBox="0 0 12 12" width="12px" zoomAndPan="magnify">
-  <defs />
-  <g />
-</svg>
-
-</pre>
-            <div onclick="location.href='#!';" id="16" class="overlay">
-                <div class="popup" onclick="event.stopPropagation();">
-                    <h2>PlantUml markup</h2>
-                    <a class="close" href="#!">&times;</a>
-                    <div class="content">
-                        <pre><code>@startuml
-
-!theme plain
-hide unlinked
-
-
-
-
-@enduml</code></pre>
-                    </div>
-                </div>
-            </div>
-            <sub><a href="#16">[source]</a></sub>
-            <sub><a href="#17">[component diagram]</a></sub>
-        </section>
-        <!-- Popup for component diagram -->
-        <div onclick="location.href='#!';" id="17" class="overlay">
-            <div class="popup" onclick="event.stopPropagation();">
-                <h2>Component Diagram</h2>
-                <a class="close" href="#!">&times;</a>
-                <div class="content">
-                    <sup>[Requires Graphviz to be installed]</sup>
-                    <pre><?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="12px" preserveAspectRatio="none" style="width:12px;height:12px;background:#FFFFFF;" version="1.1" viewBox="0 0 12 12" width="12px" zoomAndPan="magnify">
-  <defs />
-  <g />
-</svg>
-
-</pre>
-                </div>
-                <sub><a href="#uml17">[source]</a></sub>
-            </div>
-        </div>
-        <!-- Popup for component diagram UML via component diagram popup -->
-        <div onclick="location.href='#!';" id="uml17" class="overlay">
-            <div class="popup" onclick="event.stopPropagation();">
-                <h2>PlantUml markup</h2>
-                <a class="close" href="#17">&times;</a><!--show previous popup on close-->
-                <div class="content">
-                    <pre><code>@startuml
-
-!theme plain
-
-
-hide @unlinked
-@enduml</code></pre>
-                </div>
-            </div>
-        </div>
-        <!-- Section containing data for sequence diagram popups -->
-            </article>
-        <article id="18">
-        <h2>The disabled test name</h2>
-        <section class="description">
-            <h3>Description</h3>
-            <p><h4 class="warn">Test Disabled</h4></p>        </section>
-                <section class="sequence diagram svg">
-            <h3>Sequence Diagram</h3>
-            <pre><?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="12px" preserveAspectRatio="none" style="width:12px;height:12px;background:#FFFFFF;" version="1.1" viewBox="0 0 12 12" width="12px" zoomAndPan="magnify">
-  <defs />
-  <g />
-</svg>
-
-</pre>
-            <div onclick="location.href='#!';" id="19" class="overlay">
-                <div class="popup" onclick="event.stopPropagation();">
-                    <h2>PlantUml markup</h2>
-                    <a class="close" href="#!">&times;</a>
-                    <div class="content">
-                        <pre><code>@startuml
-
-!theme plain
-hide unlinked
-
-
-
-
-@enduml</code></pre>
-                    </div>
-                </div>
-            </div>
-            <sub><a href="#19">[source]</a></sub>
-            <sub><a href="#20">[component diagram]</a></sub>
-        </section>
-        <!-- Popup for component diagram -->
-        <div onclick="location.href='#!';" id="20" class="overlay">
-            <div class="popup" onclick="event.stopPropagation();">
-                <h2>Component Diagram</h2>
-                <a class="close" href="#!">&times;</a>
-                <div class="content">
-                    <sup>[Requires Graphviz to be installed]</sup>
-                    <pre><?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="12px" preserveAspectRatio="none" style="width:12px;height:12px;background:#FFFFFF;" version="1.1" viewBox="0 0 12 12" width="12px" zoomAndPan="magnify">
-  <defs />
-  <g />
-</svg>
-
-</pre>
-                </div>
-                <sub><a href="#uml20">[source]</a></sub>
-            </div>
-        </div>
-        <!-- Popup for component diagram UML via component diagram popup -->
-        <div onclick="location.href='#!';" id="uml20" class="overlay">
-            <div class="popup" onclick="event.stopPropagation();">
-                <h2>PlantUml markup</h2>
-                <a class="close" href="#20">&times;</a><!--show previous popup on close-->
-                <div class="content">
-                    <pre><code>@startuml
-
-!theme plain
-
-
-hide @unlinked
-@enduml</code></pre>
-                </div>
-            </div>
-        </div>
-        <!-- Section containing data for sequence diagram popups -->
-            </article>
     </main>
 </body>
 <footer>
@@ -401,7 +317,7 @@ hide @unlinked
                 "separateWordSearch": false,
                 "acrossElements": true,
                 "accuracy": { 
-                    "value": "exactly", "limiters": [",", ".", ";", ":", "-"] 
+                    "value": "exactly", "limiters": [ ",", ".", ";", ":", "-", "(", ")"] 
                 } 
         }
                                                                                                 <!-- Remove highlights in svg (causes text to disappear) -->
