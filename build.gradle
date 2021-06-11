@@ -1,9 +1,18 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
+    id 'signing'
+    id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
+    id 'pl.allegro.tech.build.axion-release' version '1.13.2'
 }
 
+group = 'com.github.nickmcdowall'
+version = scmVersion.version
+
+sourceCompatibility = '11'
+
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -24,4 +33,75 @@ test {
         events "failed"
         exceptionFormat "full"
     }
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    archiveClassifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar) {
+    archiveClassifier = 'javadoc'
+    from javadoc
+}
+
+artifacts {
+    archives jar
+    archives javadocJar
+    archives sourcesJar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = "$group"
+            artifactId = 'lsd-junit5'
+            version = "${scmVersion.version}"
+
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            pom {
+                name = 'lsd-junit5'
+                description = 'A library providing a Junit5 extension for generating LSD reports'
+                url = 'https://github.com/nickmcdowall/lsd-junit5.git'
+                licenses {
+                    license {
+                        name = "MIT License"
+                        url = "https://raw.githubusercontent.com/nickmcdowall/lsd-junit5/main/LICENSE.txt"
+                        distribution = "repo"
+                    }
+                }
+                developers {
+                    developer {
+                        name = "Nick"
+                        email = "nicholas.mcdowall@gmail.com"
+                        organization = 'NKM IT Solutions'
+                        organizationUrl = 'https://github.com/nickmcdowall'
+                    }
+                }
+                scm {
+                    url = "https://github.com/nickmcdowall/lsd-junit5.git"
+                }
+            }
+            repositories {
+                maven {
+                    name = 'sonatype'
+                    url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+                    credentials(PasswordCredentials)
+                }
+            }
+        }
+    }
+}
+
+nexusPublishing {
+    repositories {
+        sonatype {
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
 }
