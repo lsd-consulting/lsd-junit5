@@ -63,8 +63,17 @@ public class LsdExtension implements TestWatcher, AfterTestExecutionCallback, Af
 
     @Override
     public void afterAll(ExtensionContext context) {
-        lsdContext.completeReport(context.getDisplayName());
-        lsdContext.createIndex();
+        if (notNestedTest(context)) {
+            lsdContext.completeReport(context.getDisplayName());
+            lsdContext.createIndex();
+        }
+    }
+
+    private boolean notNestedTest(ExtensionContext context) {
+        return !context.getParent()
+                .map(ExtensionContext::getParent)
+                .map(Optional::isPresent)
+                .orElse(true);
     }
 
     private String prefixParentDisplayName(ExtensionContext context) {

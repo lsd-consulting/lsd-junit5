@@ -37,5 +37,16 @@ public class LsdExtensionDemoTest {
             lsdContext.capture("running nested test from Outer to Inner", "");
             assertThat(true).isTrue();
         }
+
+        @Nested
+        @DisplayName("Nested twice test class")
+        class NestedTwiceTestClass {
+            @Test
+            @DisplayName("This is a nested nested test!")
+            void nestedTest() {
+                lsdContext.capture("running doubly nested test from Nested to InnerNested", "");
+                assertThat(true).isTrue();
+            }
+        }
     }
 }
