@@ -1,7 +1,7 @@
-package lsd.junit5.extension;
+package io.lsdconsulting.junit5.extension;
 
 import com.lsd.LsdContext;
-import lsd.junit5.LsdExtension;
+import io.lsdconsulting.junit5.LsdExtension;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;

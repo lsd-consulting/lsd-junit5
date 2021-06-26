@@ -1,4 +1,4 @@
-package lsd.junit5;
+package io.lsdconsulting.junit5;
 
 import com.lsd.IdGenerator;
 import com.lsd.LsdContext;

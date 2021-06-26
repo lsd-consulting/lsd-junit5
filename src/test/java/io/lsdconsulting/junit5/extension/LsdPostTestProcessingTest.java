@@ -1,7 +1,7 @@
-package lsd.junit5.extension;
+package io.lsdconsulting.junit5.extension;
 
-import lsd.junit5.LsdExtension;
-import lsd.junit5.LsdPostTestProcessing;
+import io.lsdconsulting.junit5.LsdExtension;
+import io.lsdconsulting.junit5.LsdPostTestProcessing;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package lsd.junit5;
+package io.lsdconsulting.junit5;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.nickmcdowall:lsd-core:0.1.13'
+    implementation 'io.github.lsd-consulting:lsd-core:0.1.18'
     implementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
     implementation 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
     implementation 'com.j2html:j2html:1.4.0'

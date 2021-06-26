@@ -1,8 +1,8 @@
-package lsd.junit5.extension;
+package io.lsdconsulting.junit5.extension;
 
 import com.lsd.LsdContext;
 import com.lsd.properties.LsdProperties;
-import lsd.junit5.LsdExtension;
+import io.lsdconsulting.junit5.LsdExtension;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
