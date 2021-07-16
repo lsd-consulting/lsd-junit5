@@ -6,93 +6,35 @@
 </head>
 <body>
 <main role="main">
+    <span onclick="location.href='lsd-index.html';" title="back to index page" class="back_to_index"></span>
     <h1 class="logo">LSD</h1>
     <h1>Disabled Test Report</h1>
     <div class="contents">
-        <h3>Contents:</h3>
+        <h3>Contents</h3>
         <ul class="contents">
                         <li class="warn"><a href="#1">The test name</a></li>
                     </ul>
     </div>
     
     <article id="1">
+        <span onclick="location.href='#top';" title="top of page" class="back_to_top"></span>
         <h2 class="warn">The test name</h2>
         <section class="description warn">
             <h3 class="warn">Description</h3>
             <p><h4 class="warn">Test Disabled</h4></p>        </section>
-                <section class="sequence diagram svg warn">
-            <h3 class="warn">Sequence Diagram</h3>
-            <pre><?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="12px" preserveAspectRatio="none" style="width:12px;height:12px;background:#FFFFFF;" version="1.1" viewBox="0 0 12 12" width="12px" zoomAndPan="magnify">
-  <defs />
-  <g />
-</svg>
-
-</pre>
-            <div onclick="location.href='#!';" id="2" class="overlay">
-                <div class="popup" onclick="event.stopPropagation();">
-                    <h2>PlantUml markup</h2>
-                    <a class="close" href="#!">&times;</a>
-                    <div class="content">
-                        <pre><code>@startuml
-
-!theme plain
-hide unlinked
-
-
-
-
-@enduml</code></pre>
-                    </div>
-                </div>
-            </div>
-            <sub><a href="#2">[source]</a></sub>
-            <sub><a href="#3">[component diagram]</a></sub>
-        </section>
-        <!-- Popup for component diagram -->
-        <div onclick="location.href='#!';" id="3" class="overlay">
-            <div class="popup" onclick="event.stopPropagation();">
-                <h2>Component Diagram</h2>
-                <a class="close" href="#!">&times;</a>
-                <div class="content">
-                    <sup>[Requires Graphviz to be installed]</sup>
-                    <pre><?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="12px" preserveAspectRatio="none" style="width:12px;height:12px;background:#FFFFFF;" version="1.1" viewBox="0 0 12 12" width="12px" zoomAndPan="magnify">
-  <defs />
-  <g />
-</svg>
-
-</pre>
-                </div>
-                <sub><a href="#uml3">[source]</a></sub>
-            </div>
-        </div>
-        <!-- Popup for component diagram UML via component diagram popup -->
-        <div onclick="location.href='#!';" id="uml3" class="overlay">
-            <div class="popup" onclick="event.stopPropagation();">
-                <h2>PlantUml markup</h2>
-                <a class="close" href="#3">&times;</a><!--show previous popup on close-->
-                <div class="content">
-                    <pre><code>@startuml
-
-!theme plain
-
-
-hide @unlinked
-@enduml</code></pre>
-                </div>
-            </div>
-        </div>
-        <!-- Section containing data for sequence diagram popups -->
             </article>
     </main>
 </body>
 <footer>
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.0/build/styles/default.min.css">
+    <script type = "text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.0/build/styles/default.min.css">
+    <script src="custom.js"></script>
+    <script language = "javascript">
+        addSliderForSvgZoom();
+        highlightLifelinesWhenClicked();
+    </script>
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.0/build/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"></script>
     <script>
         var options = { 
@@ -101,7 +43,7 @@ hide @unlinked
                 "separateWordSearch": false,
                 "acrossElements": true,
                 "accuracy": { 
-                    "value": "exactly", "limiters": [ ",", ".", ";", ":", "-", "(", ")"] 
+                    "value": "exactly", "limiters": [ ",", ".", ";", ":", "-", "(", ")","<",">","/"] 
                 } 
         }
                                     <!-- Remove highlights in svg (causes text to disappear) -->
