@@ -29,6 +29,7 @@ jobs:
         name: build-directory
         path: build
   release:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
