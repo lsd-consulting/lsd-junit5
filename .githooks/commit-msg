@@ -6,7 +6,7 @@
 # Commits with breaking changes should include 'BREAKING CHANGE: <some description>' in the commit body with a description (Note: this is not validated by the hook).
 # 
  
-commit_regex='^((build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-zA-Z0-9 /_,.-]+?\))?: .{1,79}\w|Merge branch .+|(fixup|squash)! .+)$'
+commit_regex='^((build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-zA-Z0-9 /_,.-]+?\))?: .{1,79}\w|Merge .+|(fixup|squash)! .+)$'
 
 error_msg='
 ----------------------------------------------------
@@ -40,7 +40,7 @@ Accepted Types:
 Exceptions:
   fixup! ... 
   squash! ...
-  Merge branch ...
+  Merge ...
 '
 
 if ! grep -iqE "${commit_regex}" "$1"; then
