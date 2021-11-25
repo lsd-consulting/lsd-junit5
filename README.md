@@ -4,6 +4,7 @@
 
 [![Build](https://github.com/lsd-consulting/lsd-junit5/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/lsd-consulting/lsd-junit5/actions/workflows/ci.yml)
 [![Publish](https://github.com/lsd-consulting/lsd-junit5/actions/workflows/publish.yml/badge.svg)](https://github.com/lsd-consulting/lsd-junit5/actions/workflows/publish.yml)
+[![Nightly Build](https://github.com/lsd-consulting/lsd-junit5/actions/workflows/nightly.yml/badge.svg)](https://github.com/lsd-consulting/lsd-junit5/actions/workflows/nightly.yml)
 [![GitHub release](https://img.shields.io/github/release/lsd-consulting/lsd-junit5)](https://github.com/lsd-consulting/lsd-junit5/releases)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.lsd-consulting/lsd-junit5.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.lsd-consulting%22%20AND%20a:%22lsd-junit5%22)
 
