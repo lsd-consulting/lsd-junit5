@@ -23,6 +23,10 @@ import static java.util.Arrays.stream;
 import static java.util.function.Predicate.not;
 import static org.junit.platform.commons.util.StringUtils.isBlank;
 
+/**
+ * Junit 5 extension to create LSD reports based on test results. 
+ * (Not that this extension does not capture any events for the LSD diagrams) 
+ */
 public class LsdExtension implements TestWatcher, AfterTestExecutionCallback, AfterAllCallback {
 
     private final LsdContext lsdContext = LsdContext.getInstance();
