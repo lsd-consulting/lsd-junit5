@@ -1,7 +1,6 @@
 package io.lsdconsulting.junit5.extension;
 
-import com.lsd.LsdContext;
-import com.lsd.properties.LsdProperties;
+import com.lsd.core.LsdContext;
 import io.lsdconsulting.junit5.LsdExtension;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,7 +10,8 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import java.io.File;
 import java.util.Optional;
 
-import static com.lsd.properties.LsdProperties.OUTPUT_DIR;
+import static com.lsd.core.properties.LsdProperties.OUTPUT_DIR;
+import static com.lsd.core.properties.LsdProperties.get;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -20,7 +20,7 @@ class LsdExtensionTest {
     private final ExtensionContext mockTestContext = mock(ExtensionContext.class);
     private final LsdContext lsdContext = LsdContext.getInstance();
     private final LsdExtension lsdExtension = new LsdExtension();
-    private final File indexFile = new File(LsdProperties.get(OUTPUT_DIR), "lsd-index.html");
+    private final File indexFile = new File(get(OUTPUT_DIR), "lsd-index.html");
 
     @BeforeEach
     public void setup() {
@@ -35,7 +35,7 @@ class LsdExtensionTest {
 
         Approvals.verify(lsdContext.completeReport("Failure Test Report").toFile());
     }
-    
+
     @Test
     void approvalTestForTestSuccessfulCallback() {
         configureMockContextToReturnDisplayNames();
@@ -43,8 +43,8 @@ class LsdExtensionTest {
         lsdExtension.testSuccessful(mockTestContext);
 
         Approvals.verify(lsdContext.completeReport("Successful Test Report").toFile());
-    }    
-    
+    }
+
     @Test
     void approvalTestForTestAbortedCallback() {
         configureMockContextToReturnDisplayNames();

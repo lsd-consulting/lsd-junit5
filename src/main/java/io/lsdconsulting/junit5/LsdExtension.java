@@ -1,8 +1,8 @@
 package io.lsdconsulting.junit5;
 
-import com.lsd.IdGenerator;
-import com.lsd.LsdContext;
-import com.lsd.properties.LsdProperties;
+import com.lsd.core.IdGenerator;
+import com.lsd.core.LsdContext;
+import com.lsd.core.properties.LsdProperties;
 import j2html.tags.UnescapedText;
 import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
@@ -16,16 +16,16 @@ import java.lang.reflect.Method;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-import static com.lsd.OutcomeStatus.*;
-import static com.lsd.report.model.PopupContent.popupDiv;
+import static com.lsd.core.domain.Status.*;
+import static com.lsd.core.report.PopupContent.popupDiv;
 import static j2html.TagCreator.*;
 import static java.util.Arrays.stream;
 import static java.util.function.Predicate.not;
 import static org.junit.platform.commons.util.StringUtils.isBlank;
 
 /**
- * Junit 5 extension to create LSD reports based on test results. 
- * (Not that this extension does not capture any events for the LSD diagrams) 
+ * Junit 5 extension to create LSD reports based on test results.
+ * (Not that this extension does not capture any events for the LSD diagrams)
  */
 public class LsdExtension implements TestWatcher, AfterTestExecutionCallback, AfterAllCallback {
 
@@ -36,21 +36,21 @@ public class LsdExtension implements TestWatcher, AfterTestExecutionCallback, Af
     @Override
     public void testSuccessful(ExtensionContext context) {
         lsdContext.completeScenario(prefixParentDisplayName(context), p(
-                h4().with(new UnescapedText("&#127808; Test Passed")).withClass(SUCCESS.getCssClass())
+                h4().with(new UnescapedText("&#127808; Test Passed")).withClass("success")
         ).render(), SUCCESS);
     }
 
     @Override
     public void testDisabled(ExtensionContext context, Optional<String> reason) {
         lsdContext.completeScenario(prefixParentDisplayName(context), p(
-                h4("Test Disabled").withClass(WARN.getCssClass())
-        ).render(), WARN);
+                h4("Test Disabled").withClass("warn")
+        ).render(), FAILURE);
     }
 
     @Override
     public void testAborted(ExtensionContext context, Throwable cause) {
         var description = createErrorDescription(cause, "Test Aborted!");
-        lsdContext.completeScenario(prefixParentDisplayName(context), description, WARN);
+        lsdContext.completeScenario(prefixParentDisplayName(context), description, FAILURE);
     }
 
     @Override
@@ -95,7 +95,7 @@ public class LsdExtension implements TestWatcher, AfterTestExecutionCallback, Af
         var contentId = idGenerator.next();
         String exceptionMessage = extractMessage(cause);
         return p(
-                h4().with(new UnescapedText(header)).withClass(ERROR.getCssClass()),
+                h4().with(new UnescapedText(header)).withClass("error"),
                 a().withHref("#" + contentId).withText(exceptionMessage),
                 popupDiv(contentId, "Stacktrace", readStackTrace(cause))
         ).render();
