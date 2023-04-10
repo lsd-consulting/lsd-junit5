@@ -8,6 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 
 import static com.lsd.core.properties.LsdProperties.OUTPUT_DIR;
@@ -37,30 +41,30 @@ class LsdExtensionTest {
     }
 
     @Test
-    void approvalTestForTestSuccessfulCallback() {
+    void approvalTestForTestSuccessfulCallback() throws IOException {
         configureMockContextToReturnDisplayNames();
 
         lsdExtension.testSuccessful(mockTestContext);
 
-        Approvals.verify(lsdContext.completeReport("Successful Test Report").toFile());
+        Approvals.verify(copyOfFile(lsdContext.completeReport("Successful Test Report")));
     }
 
     @Test
-    void approvalTestForTestAbortedCallback() {
+    void approvalTestForTestAbortedCallback() throws IOException {
         configureMockContextToReturnDisplayNames();
 
         lsdExtension.testAborted(mockTestContext, new RuntimeException("Aborted for testing reasons"));
 
-        Approvals.verify(lsdContext.completeReport("Aborted Test Report").toFile());
+        Approvals.verify(copyOfFile(lsdContext.completeReport("Aborted Test Report")));
     }
 
     @Test
-    void approvalTestForTestDisabledCallback() {
+    void approvalTestForTestDisabledCallback() throws IOException {
         configureMockContextToReturnDisplayNames();
 
         lsdExtension.testDisabled(mockTestContext, Optional.of("Disabled reason"));
 
-        Approvals.verify(lsdContext.completeReport("Disabled Test Report").toFile());
+        Approvals.verify(copyOfFile(lsdContext.completeReport("Disabled Test Report")));
     }
 
     @Test
@@ -91,5 +95,11 @@ class LsdExtensionTest {
         when(mockTestContext.getParent())
                 .thenReturn(Optional.of(mockTestContext))
                 .thenReturn(Optional.empty());
+    }
+
+    private File copyOfFile(Path original) throws IOException {
+        Path copy = Path.of(original.getParent().toString(), "copy_" + original.getFileName());
+        Files.copy(original, copy, StandardCopyOption.REPLACE_EXISTING);
+        return copy.toFile();
     }
 }
