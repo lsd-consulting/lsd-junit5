@@ -2,9 +2,8 @@ package io.lsdconsulting.junit5;
 
 import com.lsd.core.IdGenerator;
 import com.lsd.core.LsdContext;
+import com.lsd.core.StringUtilsKt;
 import com.lsd.core.properties.LsdProperties;
-import j2html.tags.UnescapedText;
-import j2html.utils.EscapeUtil;
 import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -19,8 +18,6 @@ import java.util.function.Consumer;
 
 import static com.lsd.core.domain.Status.*;
 import static com.lsd.core.report.PopupContent.popupHyperlink;
-import static j2html.TagCreator.h4;
-import static j2html.TagCreator.p;
 import static java.util.Arrays.stream;
 import static java.util.function.Predicate.not;
 import static org.junit.platform.commons.util.StringUtils.isBlank;
@@ -37,16 +34,16 @@ public class LsdExtension implements TestWatcher, AfterTestExecutionCallback, Af
 
     @Override
     public void testSuccessful(ExtensionContext context) {
-        lsdContext.completeScenario(prefixParentDisplayName(context), p(
-                h4().with(new UnescapedText("&#127808; Test Passed")).withClass("success")
-        ).render(), SUCCESS);
+        lsdContext.completeScenario(prefixParentDisplayName(context),
+                "<p><h4 class=\"success\">&#127808; Test Passed</h4></p>",
+                SUCCESS);
     }
 
     @Override
     public void testDisabled(ExtensionContext context, Optional<String> reason) {
-        lsdContext.completeScenario(prefixParentDisplayName(context), p(
-                h4("Test Disabled").withClass("warn")
-        ).render(), FAILURE);
+        lsdContext.completeScenario(prefixParentDisplayName(context),
+                "<p><h4 class=\"warn\">Test Disabled</h4></p>",
+                FAILURE);
     }
 
     @Override
@@ -99,9 +96,9 @@ public class LsdExtension implements TestWatcher, AfterTestExecutionCallback, Af
         return "<p>" +
                 "<h4 class=\"error\">" + header + "</h4>" +
                 popupHyperlink(contentId, "Stacktrace",
-                        "<pre>" + EscapeUtil.escape(exceptionMessage) + "</pre>",
-                        "<pre><code>" + readStackTrace(cause) + "</code></pre>") +
-                "</p>";
+                        "<pre>" + StringUtilsKt.escapeHtml(exceptionMessage) + "</pre>",
+                        "<pre><code>" + readStackTrace(cause) + "</code></pre>"
+                ) + "</p>";
     }
 
     private void additionalProcessing(final Object instance, Class<? extends Annotation> annotation) {

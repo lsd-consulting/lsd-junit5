@@ -23,7 +23,6 @@ dependencies {
     api 'io.github.lsd-consulting:lsd-core:4.1.0'
     implementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
-    implementation 'com.j2html:j2html:1.5.0'
 
     testImplementation 'org.assertj:assertj-core:3.22.0'
     testImplementation 'com.approvaltests:approvaltests:14.0.0'
