@@ -35,7 +35,7 @@ public class LsdExtension implements TestWatcher, AfterTestExecutionCallback, Af
     @Override
     public void testSuccessful(ExtensionContext context) {
         lsdContext.completeScenario(prefixParentDisplayName(context),
-                "<p><h4 class=\"success\">&#127808; Test Passed</h4></p>",
+                "<p><h4 class=\"success\">&#10003; Test Passed</h4></p>",
                 SUCCESS);
     }
 

@@ -11,17 +11,18 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
+import static com.lsd.core.builders.MessageBuilder.messageBuilder;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(LsdExtension.class)
 public class LsdExtensionDemoTest {
 
-    private LsdContext lsdContext = LsdContext.getInstance();
+    private final LsdContext lsd = LsdContext.getInstance();
 
     @ParameterizedTest
     @ValueSource(strings = {"apple", "berry", "cat"})
     void aParameterisedTest(String input) {
-        lsdContext.capture("a package from A to B", input);
+        lsd.capture(messageBuilder().from("A").to("B").data(input).build());
         assertThat(List.of("apple", "berry", "cat")).contains(input);
     }
 
@@ -36,7 +37,7 @@ public class LsdExtensionDemoTest {
         @Test
         @DisplayName("This is a nested test!")
         void nestedTest() {
-            lsdContext.capture("running nested test from Outer to Inner", "");
+            lsd.capture(messageBuilder().from("Outer").to("Inner=").data("").build());
             assertThat(true).isTrue();
         }
 
@@ -46,7 +47,7 @@ public class LsdExtensionDemoTest {
             @Test
             @DisplayName("This is a nested nested test!")
             void nestedTest() {
-                lsdContext.capture("running doubly nested test from Nested to InnerNested", "");
+                lsd.capture(messageBuilder().from("Nester").to("InnerNester").label("running doubly nested test").data("").build());
                 assertThat(true).isTrue();
             }
         }
