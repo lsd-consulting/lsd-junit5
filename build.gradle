@@ -1,5 +1,6 @@
 plugins {
-    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm' version '1.8.10'
+    id("org.jetbrains.dokka") version "1.8.10"
     id 'maven-publish'
     id 'signing'
     id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
@@ -12,11 +13,13 @@ apply from: 'hooks.gradle'
 group = 'io.github.lsd-consulting'
 version = gitVersion().replaceAll("^v", "")
 
-sourceCompatibility = '11'
-
 repositories {
     mavenLocal()
     mavenCentral()
+}
+
+kotlin {
+    jvmToolchain(11)
 }
 
 dependencies {
@@ -47,14 +50,14 @@ test {
     finalizedBy jacocoTestReport
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-    archiveClassifier = 'sources'
-    from sourceSets.main.allSource
+java {
+    withSourcesJar()
 }
 
-task javadocJar(type: Jar) {
+tasks.register('javadocJar', Jar) {
+    dependsOn(dokkaJavadoc)
     archiveClassifier = 'javadoc'
-    from javadoc
+    from dokkaHtml.outputDirectory
 }
 
 artifacts {
@@ -70,7 +73,7 @@ publishing {
             artifactId = 'lsd-junit5'
             version = "${version}"
 
-            from components.java
+            from components.kotlin
             artifact sourcesJar
             artifact javadocJar
             pom {
