@@ -16,6 +16,7 @@ import java.lang.reflect.Method
 import java.util.*
 import java.util.function.Consumer
 import java.util.function.Predicate
+import java.util.regex.Pattern
 
 /**
  * Junit 5 extension to create LSD reports based on test results.
@@ -74,7 +75,7 @@ class LsdExtension : TestWatcher, AfterTestExecutionCallback, AfterAllCallback {
         if (parent.isPresent) {
             val parentDisplayName = prefixParentDisplayName(parent.get())
             val separator = if (StringUtils.isBlank(parentDisplayName)) "" else ": "
-            return parentDisplayName + separator + context.displayName
+            return parentDisplayName + separator + context.displayName.deCamelCase()
         }
         return ""
     }
@@ -126,4 +127,13 @@ class LsdExtension : TestWatcher, AfterTestExecutionCallback, AfterAllCallback {
             }
         }
     }
+}
+
+fun String.deCamelCase(): String {
+    return replace(Pattern.compile("([a-z])([A-Z])").toRegex(), "$1 $2")
+        .replace(Pattern.compile("([A-Z])([a-z])").toRegex(), " $1$2")
+        .replace("  ", " ")
+        .replace(Pattern.compile("[()]").toRegex(), "")
+        .trim()
+        .lowercase()
 }

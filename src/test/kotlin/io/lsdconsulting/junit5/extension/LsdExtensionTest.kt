@@ -4,11 +4,14 @@ import com.lsd.core.LsdContext
 import com.lsd.core.properties.LsdProperties.OUTPUT_DIR
 import com.lsd.core.properties.LsdProperties.get
 import io.lsdconsulting.junit5.LsdExtension
+import io.lsdconsulting.junit5.deCamelCase
 import org.approvaltests.Approvals
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtensionContext
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
 import java.io.File
@@ -16,7 +19,6 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.StandardCopyOption
 import java.util.*
-import kotlin.io.path.copyTo
 
 internal class LsdExtensionTest {
     private val mockTestContext = mock(ExtensionContext::class.java)
@@ -63,7 +65,7 @@ internal class LsdExtensionTest {
         `when`(mockTestContext.parent).thenReturn(Optional.empty())
         `when`(mockTestContext.displayName).thenReturn("a display name")
         lsdExtension.afterAll(mockTestContext)
-        Assertions.assertThat(indexFile).exists()
+        assertThat(indexFile).exists()
     }
 
     @Test
@@ -72,12 +74,23 @@ internal class LsdExtensionTest {
         `when`(mockTestContext.parent).thenReturn(Optional.of(mockTestContext))
         `when`(mockTestContext.displayName).thenReturn("a nested display name")
         lsdExtension.afterAll(mockTestContext)
-        Assertions.assertThat(indexFile).doesNotExist()
+        assertThat(indexFile).doesNotExist()
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+        "aCamelCaseExample,a camel case example",
+        "CamelCase,camel case",
+        "anITSolution,an it solution",
+        "myClassUnderTestShouldDoSomethingNice(),my class under test should do something nice",
+    )
+    fun deCamelCase(input: String, expected: String) {
+        assertThat(input.deCamelCase()).isEqualTo(expected)
     }
 
     private fun configureMockContextToReturnDisplayNames() {
         `when`(mockTestContext.requiredTestInstance).thenReturn(this)
-        `when`(mockTestContext.displayName).thenReturn("The test name")
+        `when`(mockTestContext.displayName).thenReturn("aTestName()")
         `when`(mockTestContext.parent)
             .thenReturn(Optional.of(mockTestContext))
             .thenReturn(Optional.empty())
