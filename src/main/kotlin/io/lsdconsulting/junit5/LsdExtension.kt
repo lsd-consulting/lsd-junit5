@@ -61,6 +61,7 @@ class LsdExtension : TestWatcher, AfterTestExecutionCallback, AfterAllCallback {
         }
         lsdContext.completeReport(context.displayName)
         lsdContext.createIndex()
+        lsdContext.completeComponentsReport("Combined Component Diagram")
     }
 
     private fun isNested(context: ExtensionContext): Boolean {
