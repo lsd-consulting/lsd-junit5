@@ -1,0 +1,17 @@
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "fix"
+    groups:
+      lsd-dependencies:
+        patterns:
+          - "io.github.lsd-consulting:*"
+      other:
+        exclude-patterns:
+          - "io.github.lsd-consulting:*"
