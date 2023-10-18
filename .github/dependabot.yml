@@ -12,6 +12,8 @@ updates:
       lsd-dependencies:
         patterns:
           - "io.github.lsd-consulting:*"
-      other:
+      other-dependencies:
+        patterns:
+          - "*"
         exclude-patterns:
           - "io.github.lsd-consulting:*"
