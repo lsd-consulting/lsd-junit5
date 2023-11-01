@@ -13,18 +13,4 @@ updates:
           - "org.junit.jupiter:junit-jupiter-api:*"
           - "org.junit.jupiter:junit-jupiter-engine:*"
           - "org.jetbrains.kotlin.jvm:*"
-  - package-ecosystem: "gradle"
-    directory: "/"
-    schedule:
-      interval: "daily"
-    commit-message:
-      prefix: "chore"
-    groups:
-      other-dependencies:
-        patterns:
-          - "*"
-        exclude-patterns:
-          - "io.github.lsd-consulting:*"
-          - "org.junit.jupiter:junit-jupiter-api:*"
-          - "org.junit.jupiter:junit-jupiter-engine:*"
-          - "org.jetbrains.kotlin.jvm:*"
+
