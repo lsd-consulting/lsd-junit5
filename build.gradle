@@ -29,7 +29,7 @@ dependencies {
 
     testImplementation 'org.assertj:assertj-core:3.25.1'
     testImplementation 'com.approvaltests:approvaltests:22.3.3'
-    testImplementation 'org.mockito:mockito-core:5.9.0'
+    testImplementation 'org.mockito:mockito-core:5.10.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.10.1'
 }
 
