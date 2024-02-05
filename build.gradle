@@ -25,7 +25,7 @@ kotlin {
 dependencies {
     api 'io.github.lsd-consulting:lsd-core:7.0.14'
     implementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
-    implementation 'org.junit.jupiter:junit-jupiter-engine:5.10.1'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.10.2'
 
     testImplementation 'org.assertj:assertj-core:3.25.3'
     testImplementation 'com.approvaltests:approvaltests:22.3.3'
