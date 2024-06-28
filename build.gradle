@@ -30,7 +30,7 @@ dependencies {
     testImplementation 'org.assertj:assertj-core:3.26.0'
     testImplementation 'com.approvaltests:approvaltests:24.2.0'
     testImplementation 'org.mockito:mockito-core:5.12.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.10.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.10.3'
 }
 
 jacocoTestReport {
