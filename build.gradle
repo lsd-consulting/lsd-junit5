@@ -23,7 +23,7 @@ kotlin {
 }
 
 dependencies {
-    api 'io.github.lsd-consulting:lsd-core:7.0.77'
+    api 'io.github.lsd-consulting:lsd-core:7.0.78'
     implementation 'org.junit.jupiter:junit-jupiter-api:5.11.4'
     implementation 'org.junit.jupiter:junit-jupiter-engine:5.11.4'
 
