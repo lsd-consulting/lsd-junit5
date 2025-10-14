@@ -1,6 +1,7 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '2.2.10'
     id("org.jetbrains.dokka") version "2.0.0"
+    id("org.jetbrains.dokka-javadoc") version "2.0.0"
     id 'maven-publish'
     id 'signing'
     id 'io.github.gradle-nexus.publish-plugin' version '2.0.0'
@@ -57,17 +58,17 @@ test {
 
 java {
     withSourcesJar()
+    withJavadocJar()
 }
 
-tasks.register('javadocJar', Jar) {
-    dependsOn('dokkaGeneratePublicationHtml')
-    archiveClassifier = 'javadoc'
-    from layout.buildDirectory.dir('dokka/html')
+// Configure the javadoc task to use Dokka
+javadocJar {
+    dependsOn dokkaGeneratePublicationJavadoc
+    from layout.buildDirectory.dir('dokka/javadoc')
 }
 
 artifacts {
     archives jar
-    archives javadocJar
     archives sourcesJar
 }
 
@@ -80,7 +81,6 @@ publishing {
 
             from components.kotlin
             artifact sourcesJar
-            artifact javadocJar
             pom {
                 name = 'lsd-junit5'
                 description = 'A library providing a Junit5 extension for generating LSD reports'
