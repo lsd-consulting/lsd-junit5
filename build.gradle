@@ -80,6 +80,7 @@ publishing {
 
             from components.kotlin
             artifact sourcesJar
+            artifact javadocJar
             pom {
                 name = 'lsd-junit5'
                 description = 'A library providing a Junit5 extension for generating LSD reports'
