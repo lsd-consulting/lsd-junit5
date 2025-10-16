@@ -40,12 +40,12 @@ class LsdExtension : TestWatcher, AfterTestExecutionCallback, AfterAllCallback {
         )
     }
 
-    override fun testAborted(context: ExtensionContext, cause: Throwable) {
+    override fun testAborted(context: ExtensionContext, cause: Throwable?) {
         val description = createErrorDescription(cause, "Test Aborted!")
         lsdContext.completeScenario(prefixParentDisplayName(context), description, Status.FAILURE)
     }
 
-    override fun testFailed(context: ExtensionContext, cause: Throwable) {
+    override fun testFailed(context: ExtensionContext, cause: Throwable?) {
         val description = createErrorDescription(cause, "&#10060; Failed!")
         lsdContext.completeScenario(prefixParentDisplayName(context), description, Status.ERROR)
     }
@@ -81,7 +81,7 @@ class LsdExtension : TestWatcher, AfterTestExecutionCallback, AfterAllCallback {
         return ""
     }
 
-    private fun createErrorDescription(cause: Throwable, header: String): String {
+    private fun createErrorDescription(cause: Throwable?, header: String): String {
         val contentId = idGenerator.next()
         val exceptionMessage = extractMessage(cause)
         return "<p>" +
@@ -103,16 +103,16 @@ class LsdExtension : TestWatcher, AfterTestExecutionCallback, AfterAllCallback {
         }
     }
 
-    private fun extractMessage(cause: Throwable): String? {
+    private fun extractMessage(cause: Throwable?): String? {
         return Optional.ofNullable(cause)
             .map { obj: Throwable -> obj.message }
             .orElse("")
     }
 
-    private fun readStackTrace(cause: Throwable): String {
+    private fun readStackTrace(cause: Throwable?): String {
         return Optional.ofNullable(cause)
             .filter(Predicate.not { hideStacktrace })
-            .map { throwable: Throwable? -> ExceptionUtils.readStackTrace(throwable) }
+            .map { throwable: Throwable? -> throwable?.let { ExceptionUtils.readStackTrace(it) } }
             .orElse("[Displaying the stacktrace was disabled or no cause was provided]")
     }
 
