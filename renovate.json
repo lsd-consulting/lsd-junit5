@@ -16,8 +16,7 @@
       "schedule": [
         "at any time"
       ],
-      "automerge": true,
-      "matchUpdateTypes": ["major", "minor", "patch"]
+      "automerge": true
     },
     {
       "groupName": "LSD dependencies",
@@ -28,8 +27,7 @@
       "schedule": [
         "at any time"
       ],
-      "automerge": true,
-      "matchUpdateTypes": ["major", "minor", "patch"]
+      "automerge": true
     },
     {
       "groupName": "Kotlin dependencies",
@@ -41,8 +39,7 @@
       "schedule": [
         "at any time"
       ],
-      "automerge": true,
-      "matchUpdateTypes": ["major", "minor", "patch"]
+      "automerge": true
     },
     {
       "groupName": "GitHub Actions",
@@ -51,8 +48,7 @@
       "schedule": [
         "before 4am on monday"
       ],
-      "automerge": true,
-      "matchUpdateTypes": ["major", "minor", "patch"]
+      "automerge": true
     },
     {
       "groupName": "All other production dependencies",
@@ -66,8 +62,7 @@
       "schedule": [
         "at any time"
       ],
-      "automerge": true,
-      "matchUpdateTypes": ["major", "minor", "patch"]
+      "automerge": true
     },
     {
       "groupName": "Major version updates (manual review required)",
