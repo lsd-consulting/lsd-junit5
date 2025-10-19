@@ -1,0 +1,115 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "schedule": [
+    "at any time"
+  ],
+  "platformAutomerge": true,
+  "automergeType": "pr",
+  "packageRules": [
+    {
+      "groupName": "Test dependencies",
+      "matchDepTypes": ["test"],
+      "matchPackageNames": [
+        "org.junit:**",
+        "org.junit.jupiter:**", 
+        "org.junit.platform:**",
+        "org.assertj:**",
+        "org.mockito:**",
+        "com.approvaltests:**"
+      ],
+      "commitMessagePrefix": "test:",
+      "schedule": [
+        "at any time"
+      ],
+      "automerge": true,
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "groupName": "JUnit dependencies",
+      "matchPackageNames": [
+        "org.junit:**",
+        "org.junit.jupiter:**",
+        "org.junit.platform:**"
+      ],
+      "commitMessagePrefix": "test:",
+      "schedule": [
+        "at any time"
+      ],
+      "automerge": true,
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "groupName": "Testing dependencies", 
+      "matchPackageNames": [
+        "org.assertj:**",
+        "org.mockito:**",
+        "com.approvaltests:**"
+      ],
+      "commitMessagePrefix": "test:",
+      "schedule": [
+        "at any time"
+      ],
+      "automerge": true,
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "groupName": "LSD dependencies",
+      "matchPackageNames": [
+        "io.github.lsd-consulting:**"
+      ],
+      "commitMessagePrefix": "fix:",
+      "schedule": [
+        "at any time"
+      ],
+      "automerge": true,
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "groupName": "Kotlin dependencies",
+      "matchPackageNames": [
+        "org.jetbrains.kotlin*",
+        "org.jetbrains.dokka*"
+      ],
+      "commitMessagePrefix": "fix:",
+      "schedule": [
+        "at any time"
+      ],
+      "automerge": true,
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "groupName": "GitHub Actions",
+      "matchManagers": ["github-actions"],
+      "commitMessagePrefix": "ci:",
+      "schedule": [
+        "before 4am on monday"
+      ],
+      "automerge": true,
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "groupName": "All other production dependencies",
+      "excludePackageNames": [
+        "org.junit:**",
+        "org.junit.jupiter:**",
+        "org.junit.platform:**", 
+        "org.assertj:**",
+        "org.mockito:**",
+        "com.approvaltests:**",
+        "io.github.lsd-consulting:**",
+        "org.jetbrains.kotlin*",
+        "org.jetbrains.dokka*"
+      ],
+      "matchDepTypes": ["dependencies"],
+      "commitMessagePrefix": "fix:",
+      "schedule": [
+        "at any time"
+      ],
+      "automerge": true,
+      "matchUpdateTypes": ["minor", "patch"]
+    }
+  ]
+}
