@@ -17,7 +17,7 @@
         "at any time"
       ],
       "automerge": true,
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["major", "minor", "patch"]
     },
     {
       "groupName": "JUnit dependencies",
@@ -31,7 +31,7 @@
         "at any time"
       ],
       "automerge": true,
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["major", "minor", "patch"]
     },
     {
       "groupName": "Testing dependencies", 
@@ -45,7 +45,7 @@
         "at any time"
       ],
       "automerge": true,
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["major", "minor", "patch"]
     },
     {
       "groupName": "LSD dependencies",
@@ -57,7 +57,7 @@
         "at any time"
       ],
       "automerge": true,
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["major", "minor", "patch"]
     },
     {
       "groupName": "Kotlin dependencies",
@@ -70,7 +70,7 @@
         "at any time"
       ],
       "automerge": true,
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["major", "minor", "patch"]
     },
     {
       "groupName": "GitHub Actions",
@@ -80,7 +80,7 @@
         "before 4am on monday"
       ],
       "automerge": true,
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["major", "minor", "patch"]
     },
     {
       "groupName": "All other production dependencies",
@@ -95,7 +95,12 @@
         "at any time"
       ],
       "automerge": true,
-      "matchUpdateTypes": ["minor", "patch"]
+      "matchUpdateTypes": ["major", "minor", "patch"]
+    },
+    {
+      "groupName": "Major version updates (manual review required)",
+      "matchUpdateTypes": ["major"],
+      "automerge": false
     }
   ]
 }
