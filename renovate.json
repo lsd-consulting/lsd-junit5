@@ -20,34 +20,6 @@
       "matchUpdateTypes": ["major", "minor", "patch"]
     },
     {
-      "groupName": "JUnit dependencies",
-      "matchPackageNames": [
-        "org.junit:**",
-        "org.junit.jupiter:**",
-        "org.junit.platform:**"
-      ],
-      "commitMessagePrefix": "test:",
-      "schedule": [
-        "at any time"
-      ],
-      "automerge": true,
-      "matchUpdateTypes": ["major", "minor", "patch"]
-    },
-    {
-      "groupName": "Testing dependencies", 
-      "matchPackageNames": [
-        "org.assertj:**",
-        "org.mockito:**",
-        "com.approvaltests:**"
-      ],
-      "commitMessagePrefix": "test:",
-      "schedule": [
-        "at any time"
-      ],
-      "automerge": true,
-      "matchUpdateTypes": ["major", "minor", "patch"]
-    },
-    {
       "groupName": "LSD dependencies",
       "matchPackageNames": [
         "io.github.lsd-consulting:**"
