@@ -12,14 +12,6 @@
     {
       "groupName": "Test dependencies",
       "matchDepTypes": ["test"],
-      "matchPackageNames": [
-        "org.junit:**",
-        "org.junit.jupiter:**", 
-        "org.junit.platform:**",
-        "org.assertj:**",
-        "org.mockito:**",
-        "com.approvaltests:**"
-      ],
       "commitMessagePrefix": "test:",
       "schedule": [
         "at any time"
@@ -93,12 +85,6 @@
     {
       "groupName": "All other production dependencies",
       "excludePackageNames": [
-        "org.junit:**",
-        "org.junit.jupiter:**",
-        "org.junit.platform:**", 
-        "org.assertj:**",
-        "org.mockito:**",
-        "com.approvaltests:**",
         "io.github.lsd-consulting:**",
         "org.jetbrains.kotlin*",
         "org.jetbrains.dokka*"
