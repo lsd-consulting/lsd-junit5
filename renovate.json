@@ -1,73 +1,57 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:base",
+    ":dependencyDashboard",
+    ":gradle"
   ],
-  "schedule": [
-    "at any time"
-  ],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
   "platformAutomerge": true,
-  "automergeType": "pr",
   "packageRules": [
     {
-      "groupName": "Test dependencies",
-      "matchDepTypes": ["test"],
-      "commitMessagePrefix": "test:",
-      "schedule": [
-        "at any time"
-      ],
-      "automerge": true
+      "matchUpdateTypes": ["patch", "minor"],
+      "automerge": true,
+      "automergeType": "pr"
     },
     {
-      "groupName": "LSD dependencies",
-      "matchPackageNames": [
-        "io.github.lsd-consulting:**"
-      ],
-      "commitMessagePrefix": "fix:",
-      "schedule": [
-        "at any time"
-      ],
-      "automerge": true
-    },
-    {
-      "groupName": "Kotlin dependencies",
-      "matchPackageNames": [
-        "org.jetbrains.kotlin*",
-        "org.jetbrains.dokka*"
-      ],
-      "commitMessagePrefix": "fix:",
-      "schedule": [
-        "at any time"
-      ],
-      "automerge": true
-    },
-    {
-      "groupName": "GitHub Actions",
-      "matchManagers": ["github-actions"],
-      "commitMessagePrefix": "ci:",
-      "schedule": [
-        "before 4am on monday"
-      ],
-      "automerge": true
-    },
-    {
-      "groupName": "All other production dependencies",
-      "excludePackageNames": [
-        "io.github.lsd-consulting:**",
-        "org.jetbrains.kotlin*",
-        "org.jetbrains.dokka*"
-      ],
-      "matchDepTypes": ["dependencies"],
-      "commitMessagePrefix": "fix:",
-      "schedule": [
-        "at any time"
-      ],
-      "automerge": true
-    },
-    {
-      "groupName": "Major version updates (manual review required)",
       "matchUpdateTypes": ["major"],
       "automerge": false
+    },
+    {
+      "matchPackagePatterns": ["org.jetbrains.kotlin"],
+      "groupName": "kotlin dependencies"
+    },
+    {
+      "matchPackagePatterns": ["io.github.lsd-consulting"],
+      "groupName": "lsd dependencies"
+    },
+    {
+      "matchDepTypes": [
+        "testImplementation",
+        "testCompileOnly",
+        "testRuntimeOnly",
+        "testApi"
+      ],
+      "commitMessagePrefix": "test(deps): "
+    },
+    {
+      "matchDepTypes": [
+        "implementation",
+        "api",
+        "compileOnly",
+        "runtimeOnly"
+      ],
+      "commitMessagePrefix": "fix(deps): "
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "commitMessagePrefix": "ci(deps): "
     }
-  ]
+  ],
+  "commitMessagePrefix": "chore(deps): "
 }
