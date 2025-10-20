@@ -34,6 +34,7 @@
       "matchPackagePatterns": [
         "org.jetbrains.kotlin*",
         "org.jetbrains.dokka*",
+        "org.junit:**",
         "io.github.lsd-consulting:**"
       ],
       "commitMessagePrefix": "fix(deps): "
