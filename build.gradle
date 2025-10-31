@@ -24,7 +24,7 @@ kotlin {
 
 dependencies {
     // Import JUnit BOM to manage all JUnit-related dependency versions
-    implementation platform('org.junit:junit-bom:6.0.0')
+    implementation platform('org.junit:junit-bom:6.0.1')
     
     api 'io.github.lsd-consulting:lsd-core:7.7.1'
     implementation 'org.junit.jupiter:junit-jupiter-api'
