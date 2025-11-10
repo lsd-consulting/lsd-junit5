@@ -26,7 +26,7 @@ dependencies {
     // Import JUnit BOM to manage all JUnit-related dependency versions
     implementation platform('org.junit:junit-bom:6.0.1')
     
-    api 'io.github.lsd-consulting:lsd-core:7.8.0'
+    api 'io.github.lsd-consulting:lsd-core:7.8.1'
     implementation 'org.junit.jupiter:junit-jupiter-api'
     implementation 'org.junit.jupiter:junit-jupiter-engine'
     implementation 'org.junit.platform:junit-platform-launcher'
