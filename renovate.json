@@ -33,6 +33,11 @@
       "groupName": "lsd dependencies"
     },
     {
+      "description": "Pin JUnit to major version 5.x",
+      "matchPackageNames": ["org.junit:junit-bom"],
+      "allowedVersions": "<6.0.0"
+    },
+    {
       "description": "Production dependencies - triggers semantic releases",
       "matchPackagePatterns": [
         "org.jetbrains.kotlin*",

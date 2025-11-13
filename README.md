@@ -5,6 +5,9 @@
 [![GitHub release](https://img.shields.io/github/release/lsd-consulting/lsd-junit5)](https://github.com/lsd-consulting/lsd-junit5/releases)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.lsd-consulting/lsd-junit5.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.lsd-consulting%22%20AND%20a:%22lsd-junit5%22)
 
+> [!WARNING]
+> **DEPRECATED**: This library has been superseded by [lsd-junit-jupiter](https://github.com/lsd-consulting/lsd-junit-jupiter). This repository will continue to support JUnit 5.x but new projects should use lsd-junit-jupiter for JUnit Jupiter (6.x+) support.
+
 JUnit 5 extension for [lsd-core](https://github.com/lsd-consulting/lsd-core) - automatically generates living sequence diagrams from your tests.
 
 ## Quick Start
